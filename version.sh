@@ -14,7 +14,7 @@
 
 #!/bin/bash
 
-readonly CHART_PATH="cnpg" # replace with your actual path
+readonly CHART_PATH="." # replace with your actual path
 readonly TEMP_REPO_NAME="temp" # This will be removed when the script is done
 
 verify_commands_exist() {
