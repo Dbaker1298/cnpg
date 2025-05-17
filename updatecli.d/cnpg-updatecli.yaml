@@ -1,0 +1,71 @@
+# updatecli.yaml
+name: Example of Helm Chart resources
+
+scms:
+  helm-charts:
+    kind: github
+    spec:
+      user: "updatecli-bot"
+      email: "bot@updatecli.io"
+      owner: "Dbaker1298"
+      repository: "cnpg"
+      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
+      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      branch: "main"
+sources:
+  chartRelease:
+    kind: helmchart
+    spec:
+      url: https://cloudnative-pg.github.io/charts
+      name: cloudnative-pg
+  # imageRelease:
+  #   kind: "githubrelease"
+  #   name: "Get cloudnative-pg/cloudnative-pg latest image version"
+  #   spec:
+  #     owner: "cloudnative-pg"
+  #     repository: "cloudnative-pg"
+  #     token: '{{ requiredEnv "GITHUB_GHCR" }}'
+  #     username: "Dbaker1298"
+  #     typefilter:
+  #       release: false
+  #       latest: true
+
+conditions:
+  isCloudnativepgHelmChartVersionAvailable:
+    name: "Test if the cnpg helm chart is available"
+    kind: helmchart
+    spec:
+      url: https://cloudnative-pg.github.io/charts
+      name: cloudnative-pg
+      version: "0.21.2"
+    sourceid: chartRelease
+  # dockerImagePublished:
+  #   name: "Test if the cnpg image is published"
+  #   kind: dockerimage
+  #   sourceid: imageRelease
+  #   spec:
+  #     image: "ghcr.io/cloudnative-pg/cloudnative-pg"
+  #     tag: "1.23.1"
+  #     architecture: "amd64"
+
+targets:
+  chartcloudnativepg:
+    name: "Bump cnpg Chart Version"
+    kind: helmchart
+    spec:
+      name: "."
+      file: "Chart.yaml"
+      key: "$.dependencies[0].version"
+      versionincrement: "patch,minor,major"
+    scmid: helm-charts
+    sourceid: chartRelease
+  # imagecloudnativepg:
+  #   name: "Bump cnpg Image Version"
+  #   kind: "helmchart"
+  #   spec:
+  #     name: "."
+  #     file: "Chart.yaml"
+  #     key: "$.annotations.helm.sh/images[0].tag"
+  #     versionincrement: "patch,minor,major"
+  #   scmid: helm-charts
+  #   sourceid: imageRelease
