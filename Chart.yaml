@@ -26,5 +26,4 @@ dependencies:
 annotations:
   helm.sh/images: |
     - name: cloudnative-pg
-      image: ghcr.io/cloudnative-pg/cloudnative-pg
-      tag: 1.23.1
+      image: ghcr.io/cloudnative-pg/cloudnative-pg:1.23.1
