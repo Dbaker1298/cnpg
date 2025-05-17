@@ -16,4 +16,5 @@ https://www.updatecli.io/docs/prologue/quick-start/
 
 Source, Condtion, and Target behave differently based on the **plugin** used, which is defined by **"kind"**.
 
-`manifest.yaml`
+`updatecli diff --config updatecli.d/cnpg-updatecli.yaml `
+

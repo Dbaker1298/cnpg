@@ -12,6 +12,10 @@ scms:
       token: '{{ requiredEnv "GITHUB_TOKEN" }}'
       username: '{{ requiredEnv "GITHUB_ACTOR" }}'
       branch: "main"
+      commitmessage:
+        type: "feat"
+        title: "updatecli: update cloudnative-pg chart version"
+        body: "updatecli: update cloudnative-pg chart version"
 sources:
   chartRelease:
     kind: helmchart
