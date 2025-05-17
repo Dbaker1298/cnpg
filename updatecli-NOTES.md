@@ -17,4 +17,7 @@ https://www.updatecli.io/docs/prologue/quick-start/
 Source, Condtion, and Target behave differently based on the **plugin** used, which is defined by **"kind"**.
 
 `updatecli diff --config updatecli.d/cnpg-updatecli.yaml `
+`updatecli apply --config updatecli.d/cnpg-updatecli.yaml`
 
+`helm plugin install https://github.com/d2iq-labs/helm-list-images`
+`list-images CHART|RELEASE [flags]`
