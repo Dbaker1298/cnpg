@@ -27,7 +27,7 @@ jobs:
         uses: updatecli/updatecli-action@v2
 
       - name: Run Updatecli
-        run: "udatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
+        run: "updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
         env:
           UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
