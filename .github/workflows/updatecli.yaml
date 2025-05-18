@@ -35,13 +35,13 @@ jobs:
       - name: Run Updatecli
         run: |
           pwd
-          updatecli diff --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug
+          updatecli diff --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
       - name: Run Updatecli in apply mode
-        run: "updatecli apply --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug"
+        run: "updatecli apply --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
