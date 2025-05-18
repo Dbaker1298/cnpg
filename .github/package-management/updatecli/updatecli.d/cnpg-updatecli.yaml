@@ -38,8 +38,8 @@ targets:
     name: "Bump cnpg Chart Version"
     kind: helmchart
     spec:
-      name: "."
-      file: ".github/package-management/cnpg-operator/Chart.yaml"
+      name: "package-management/cnpg-operator"
+      file: "Chart.yaml"
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"
     sourceid: chartRelease
