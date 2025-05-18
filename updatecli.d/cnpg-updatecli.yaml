@@ -28,7 +28,7 @@ sources:
   #   spec:
   #     owner: "cloudnative-pg"
   #     repository: "cloudnative-pg"
-  #     token: '{{ requiredEnv "GITHUB_GHCR" }}'
+  #     token: "UPDATECLI_GITHUB_TOKEN"
   #     username: "Dbaker1298"
   #     typefilter:
   #       release: false
