@@ -13,8 +13,8 @@ scms:
       username: "Dbaker1298"
       branch: "main"
       commitmessage:
-        type: "feat"
-        title: "updatecli: update cloudnative-pg chart version"
+        type: "chore"
+        title: "chore: update cloudnative-pg chart version"
         body: "updatecli: update cloudnative-pg chart version"
 sources:
   chartRelease:
@@ -38,7 +38,7 @@ targets:
     name: "Bump cnpg Chart Version"
     kind: helmchart
     spec:
-      name: "."
+      name: ".github/package-management/cnpg-operator"
       file: "Chart.yaml"
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"

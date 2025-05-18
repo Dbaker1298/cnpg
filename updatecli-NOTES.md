@@ -21,3 +21,55 @@ Source, Condtion, and Target behave differently based on the **plugin** used, wh
 
 `helm plugin install https://github.com/d2iq-labs/helm-list-images`
 `list-images CHART|RELEASE [flags]`
+
+➜  cnpg-opetator git:(main) ✗ `helm list-images .`
+**ghcr.io/cloudnative-pg/cloudnative-pg:1.25.1**
+➜  cnpg-opetator git:(main) ✗ `pwd`
+/home/david/projects/cnpg-operator/cnpg/**.github/package-management/cnpg-opetator**
+
+---
+
+---
+name: Bump OpenTelemetry-Collector chart version
+
+pipelineid: "opentelemetry-collector"
+
+scms:
+  default:
+    kind: github
+    spec:
+      user: "{{ .github.user }}"
+      email: "{{ .github.email }}"
+      owner: "{{ .github.owner }}"
+      repository: "{{ .github.repository }}"
+      token: "{{ requiredEnv .github.token }}"
+      username: "{{ .github.username }}"
+      branch: "{{ .github.branch }}"
+
+sources:
+  chartLatestRelease:
+    kind: helmchart
+    spec:
+      url: https://open-telemetry.github.io/opentelemetry-helm-charts
+      name: opentelemetry-collector
+
+targets:
+  chartVersion:
+    sourceid: chartLatestRelease
+    name: Update Chart Version for OpenTelemetry Collector to {{ source "chartLatestRelease" }}
+    kind: file
+    spec:
+      file: opentelemetry-collector/deploy.sh
+      matchpattern: "CHART_VERSION=.*"
+      replacepattern: 'CHART_VERSION={{ source "chartLatestRelease" }}'
+    scmid: default
+
+actions:
+  default:
+    kind: github/pullrequest
+    scmid: default
+    title: Bump OpenTelemetry Collector chart version to {{ source "chartLatestRelease" }}
+    spec:
+      labels:
+        - dependencies
+        - observability

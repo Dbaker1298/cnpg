@@ -26,4 +26,4 @@ go.work.sum
 
 # VS Code settings
 .vscode/
-
+.github/workflows/image-patch.yaml
