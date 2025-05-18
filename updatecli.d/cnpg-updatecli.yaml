@@ -9,8 +9,8 @@ scms:
       email: "bot@updatecli.io"
       owner: "Dbaker1298"
       repository: "cnpg"
-      token: "UPDATECLI_GITHUB_TOKEN"
-      username: "updatecli-bot"
+      token: "UPDATECLI_PAT"
+      username: "Dbaker1298"
       branch: "main"
       directory: "/home/runner/work/cnpg/cnpg"
       commitmessage:
