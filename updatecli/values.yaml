@@ -1,0 +1,6 @@
+---
+github:
+  user: "updatecli-bot"
+  email: "bot@updatecli.io"
+  username: "github-actions"
+  token: "GITHUB_TOKEN"

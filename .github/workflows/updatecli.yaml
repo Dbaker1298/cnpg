@@ -1,0 +1,50 @@
+---
+name: Updatecli
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  updatecli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Updatecli
+        uses: updatecli/updatecli-action@v2
+
+      - name: Debug file path
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Files in current directory:"
+          ls -la
+          echo ""
+          pwd
+
+      - name: Run Updatecli
+        run: |
+          pwd
+          updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+
+      - name: Run Updatecli in apply mode
+        run: "updatecli apply --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
