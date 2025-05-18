@@ -11,7 +11,7 @@ scms:
       repository: "cnpg"
       token: "{{ requiredEnv .github.token }}"
       username: "Dbaker1298"
-      branch: "new-pkg"
+      branch: "main"
       commitmessage:
         type: "chore"
         title: "chore: update cloudnative-pg chart version"
