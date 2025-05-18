@@ -43,3 +43,4 @@ targets:
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"
     sourceid: chartRelease
+    scmid: helm-charts
