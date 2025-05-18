@@ -2,9 +2,6 @@
 name: Updatecli
 
 on:
-  push:
-    branches: 
-      - main
   pull_request:
     branches: 
       - main
@@ -25,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Updatecli
-        uses: updatecli/updatecli-action@v2
+        uses: updatecli/updatecli-action@v2.84.0
 
       - name: Debug file path
         run: |
@@ -38,13 +35,13 @@ jobs:
       - name: Run Updatecli
         run: |
           pwd
-          updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug
+          updatecli diff --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
       - name: Run Updatecli in apply mode
-        run: "updatecli apply --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug"
+        run: "updatecli apply --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           

@@ -1,0 +1,41 @@
+apiVersion: v2
+name: rancher-monitoring
+description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
+  and Prometheus rules combined with documentation and scripts to provide easy to
+  operate end-to-end Kubernetes cluster monitoring with Prometheus using the Prometheus
+  Operator.
+type: application
+version: 105.1.3+up61.3.2
+appVersion: "v0.75.1"
+dependencies:
+  - name: rancher-monitoring
+    repository: "https://charts.rancher.io"
+    version: "105.1.3+up61.3.2"
+annotations:
+  helm.sh/images: |
+    - name: alertmanager
+      image: docker.io/rancher/mirrored-prometheus-alertmanager:v0.27.0
+    - name: prometheus
+      image: docker.io/rancher/mirrored-prometheus-prometheus:v2.53.1
+    - name: prometheus-operator
+      image: docker.io/rancher/mirrored-prometheus-operator-prometheus-operator:v0.75.1
+    - name: kube-state-metrics
+      image: docker.io/rancher/mirrored-kube-state-metrics-kube-state-metrics:v2.12.0
+    - name: ingress-nginx-kube-webhook-certgen
+      image: docker.io/rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.4.3
+    - name: node-exporter
+      image: docker.io/rancher/mirrored-prometheus-node-exporter:v1.8.2
+    - name: kiwigrid-k8s-sidecar
+      image: rancher/mirrored-kiwigrid-k8s-sidecar:1.27.4
+    - name: grafana
+      image: rancher/mirrored-grafana-grafana:11.1.0
+    - name: library-nginx
+      image: rancher/mirrored-library-nginx:1.24.0-alpine
+    - name: prometheus-adapter
+      image: rancher/mirrored-prometheus-adapter-prometheus-adapter:v0.12.0
+    - name: kubectl
+      image: rancher/kubectl:v1.29.2
+    - name: shell
+      image: rancher/shell:v0.2.1
+  upstreamReleaseNotes: |
+    - [Find upstream release notes](https://github.com/rancher/charts/tree/dev-v2.11/charts/rancher-monitoring/105.1.3%2Bup61.3.2)
