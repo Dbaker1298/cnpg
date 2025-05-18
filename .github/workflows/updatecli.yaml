@@ -38,7 +38,7 @@ jobs:
       - name: Run Updatecli
         run: |
           pwd
-          updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml
+          updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         

@@ -12,7 +12,6 @@ scms:
       token: "{{ requiredEnv .github.token }}"
       username: "Dbaker1298"
       branch: "main"
-      directory: "/home/runner/work/cnpg/cnpg"
       commitmessage:
         type: "feat"
         title: "updatecli: update cloudnative-pg chart version"
@@ -43,7 +42,6 @@ targets:
       file: "Chart.yaml"
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"
-    scmid: helm-charts
     sourceid: chartRelease
 
 actions:
