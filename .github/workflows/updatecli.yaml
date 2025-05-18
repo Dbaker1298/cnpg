@@ -17,6 +17,11 @@ permissions:
 jobs:
   updatecli:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config:
+          - cnpg-updatecli.yaml
+          - rancher-monitoring.yaml
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,16 +37,16 @@ jobs:
           echo ""
           pwd
 
-      - name: Run Updatecli
+      - name: Run Updatecli diff
         run: |
           pwd
-          updatecli diff --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug
+          updatecli diff --config .github/package-management/updatecli/updatecli.d/${{ matrix.config }} --values .github/package-management/updatecli/values.yaml --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
-      - name: Run Updatecli in apply mode
-        run: "updatecli apply --config .github/package-management/updatecli/updatecli.d/cnpg-updatecli.yaml --values .github/package-management/updatecli/values.yaml --debug"
+      - name: Run Updatecli apply
+        run: "updatecli apply --config .github/package-management/updatecli/updatecli.d/${{ matrix.config }} --values .github/package-management/updatecli/values.yaml --debug"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
