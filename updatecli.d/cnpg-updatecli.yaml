@@ -9,8 +9,8 @@ scms:
       email: "bot@updatecli.io"
       owner: "Dbaker1298"
       repository: "cnpg"
-      token: '{{ requiredEnv "GITHUB_TOKEN" }}'
-      username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+      token: "UPDATECLI_GITHUB_TOKEN"
+      username: "updatecli-bot"
       branch: "main"
       commitmessage:
         type: "feat"
