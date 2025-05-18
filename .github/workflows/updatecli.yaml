@@ -10,9 +10,12 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # every day at midnight UTC
+    - cron: '0 0 * * *'
 
-permissions: write-all
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
 
 jobs:
   updatecli:
@@ -33,11 +36,11 @@ jobs:
           pwd
 
       - name: Run Updatecli
-        env:
-          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pwd
           updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 
       - name: Run Updatecli in apply mode

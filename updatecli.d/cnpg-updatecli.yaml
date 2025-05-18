@@ -9,7 +9,7 @@ scms:
       email: "bot@updatecli.io"
       owner: "Dbaker1298"
       repository: "cnpg"
-      token: "UPDATECLI_PAT"
+      token: "{{ requiredEnv .github.token }}"
       username: "Dbaker1298"
       branch: "main"
       directory: "/home/runner/work/cnpg/cnpg"
@@ -45,3 +45,11 @@ targets:
       versionincrement: "patch,minor,major"
     scmid: helm-charts
     sourceid: chartRelease
+
+actions:
+  default:
+    kind: "github/pullrequest"
+    scmid: helm-charts
+    title: "updatecli: update cloudnative-pg chart version"
+    spec:
+      automerge: false
