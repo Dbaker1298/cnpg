@@ -12,9 +12,7 @@ on:
   schedule:
     - cron: "0 0 * * *" # every day at midnight UTC
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: write-all
 
 jobs:
   updatecli:
@@ -36,7 +34,7 @@ jobs:
 
       - name: Run Updatecli
         env:
-          UPDATECLI_PAT: ${{ secrets.UPDATECLI_PAT}}
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pwd
           updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml
