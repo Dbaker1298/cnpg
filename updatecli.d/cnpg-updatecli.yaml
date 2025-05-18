@@ -43,11 +43,3 @@ targets:
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"
     sourceid: chartRelease
-
-actions:
-  default:
-    kind: "github/pullrequest"
-    scmid: helm-charts
-    title: "updatecli: update cloudnative-pg chart version"
-    spec:
-      automerge: false
