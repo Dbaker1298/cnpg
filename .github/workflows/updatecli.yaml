@@ -1,0 +1,38 @@
+---
+name: Updatecli
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # every day at midnight UTC
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  updatecli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Updatecli
+        uses: updatecli/updatecli-action@v2
+
+      - name: Run Updatecli
+        run: "udatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
+        env:
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Updatecli in apply mode
+        run: "updatecli apply --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
+        env:
+          UPDATECLI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          

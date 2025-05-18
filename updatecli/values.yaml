@@ -1,0 +1,6 @@
+---
+github:
+  user: "updatecli-bot"
+  email: "bot@updatecli.io"
+  username: '{{ requiredEnv "GITHUB_ACTOR" }}'
+  token: '{{ requiredEnv "GITHUB_TOKEN" }}'
