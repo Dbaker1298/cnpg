@@ -12,6 +12,7 @@ scms:
       token: "UPDATECLI_GITHUB_TOKEN"
       username: "updatecli-bot"
       branch: "main"
+      directory: ""
       commitmessage:
         type: "feat"
         title: "updatecli: update cloudnative-pg chart version"
