@@ -11,7 +11,7 @@ scms:
       repository: "cnpg"
       token: "UPDATECLI_PAT"
       username: "Dbaker1298"
-      branch: "main"
+      branch: "action-workflow"
       directory: "/home/runner/work/cnpg/cnpg"
       commitmessage:
         type: "feat"
