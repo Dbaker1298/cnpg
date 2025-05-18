@@ -36,7 +36,7 @@ conditions:
     sourceid: chartRelease
 
 targets:
-  chartcloudnativepg:
+  chartRancherMonitoring:
     name: "Bump rancher-monitoring Chart Version"
     kind: helmchart
     spec:

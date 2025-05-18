@@ -26,7 +26,7 @@ sources:
       name: cloudnative-pg
 
 conditions:
-  isCloudnativepgHelmChartVersionAvailable:
+  isPreviousChartAvailable:
     name: "Test if the cnpg helm chart is available"
     kind: helmchart
     spec:
