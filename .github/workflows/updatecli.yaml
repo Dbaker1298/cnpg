@@ -31,6 +31,8 @@ jobs:
           echo "Current directory: $(pwd)"
           echo "Files in current directory:"
           ls -la
+          echo ""
+          pwd
 
       - name: Run Updatecli
         run: "updatecli diff --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
