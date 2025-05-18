@@ -44,7 +44,7 @@ jobs:
         
 
       - name: Run Updatecli in apply mode
-        run: "updatecli apply --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml"
+        run: "updatecli apply --config ./updatecli.d/cnpg-updatecli.yaml --values updatecli/values.yaml --debug"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
