@@ -1,13 +1,13 @@
 # updatecli.yaml
-name: cnpg-operator chart upgrade
+name: rancher-monitoring chart upgrade
 
-pipelineid: "cnpg-operator"
+pipelineid: "rancher-monitoring"
 
 scms:
   helm-charts:
     kind: github
     spec:
-      user: "updatecli-bot"
+      user: "{{ .github.user }}"
       email: "bot@updatecli.io"
       owner: "Dbaker1298"
       repository: "cnpg"
@@ -16,31 +16,31 @@ scms:
       branch: "main"
       commitmessage:
         type: "chore"
-        title: "chore: update cloudnative-pg chart version"
-        body: "updatecli: update cloudnative-pg chart version"
+        title: "chore: update rancher-monitoring chart version"
+        body: "updatecli: update rancher-monitoring chart version"
 sources:
   chartRelease:
     kind: helmchart
     spec:
-      url: https://cloudnative-pg.github.io/charts
-      name: cloudnative-pg
+      url: "https://charts.rancher.io"
+      name: rancher-monitoring
 
 conditions:
   isPreviousChartAvailable:
-    name: "Test if the cnpg helm chart is available"
+    name: "Is previous rancher-monitoring chart is available"
     kind: helmchart
     spec:
-      url: https://cloudnative-pg.github.io/charts
-      name: cloudnative-pg
-      version: "0.21.2"
+      url: "https://charts.rancher.io"
+      name: rancher-monitoring
+      version: "105.1.3+up61.3.2"
     sourceid: chartRelease
 
 targets:
-  chartcloudnativepg:
-    name: "Bump cnpg Chart Version"
+  chartRancherMonitoring:
+    name: "Bump rancher-monitoring Chart Version"
     kind: helmchart
     spec:
-      name: ".github/package-management/cnpg-operator"
+      name: ".github/package-management/rancher-monitoring"
       file: "Chart.yaml"
       key: "$.dependencies[0].version"
       versionincrement: "patch,minor,major"
@@ -53,5 +53,5 @@ actions:
     scmid: helm-charts
     spec:
       automerge: false
-      title: "updatecli: update cloudnative-pg chart version"
-      description: "updatecli: update cloudnative-pg chart version"
+      title: "chore: update rancher-monitoring chart version"
+      description: "chore: update rancher-monitoring chart version"
