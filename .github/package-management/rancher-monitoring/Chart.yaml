@@ -2,12 +2,12 @@ apiVersion: v2
 name: rancher-monitoring
 description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards, and Prometheus rules combined with documentation and scripts to provide easy to operate end-to-end Kubernetes cluster monitoring with Prometheus using the Prometheus Operator.
 type: application
-version: 106.0.0
+version: 107.0.0
 appVersion: "v0.75.1"
 dependencies:
   - name: rancher-monitoring
     repository: "https://charts.rancher.io"
-    version: 106.1.1+up69.8.2-rancher.5
+    version: 106.1.2+up69.8.2-rancher.7
 annotations:
   helm.sh/images: |
     - name: alertmanager
